@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { incrementCount } from '../redux/actionCreators';
 
@@ -11,22 +11,12 @@ class WorkZone extends Component {
 
   render() {
     return (
-      <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-        <View style={{ justifyContent: 'center', alignItems: 'center', marginBottom: 60 }}>
+      <View style={styles.containerStyle}>
+        <View style={styles.textContainerStyle}>
           <Text style={{ fontSize: 24 }}>Current Count:</Text>
-          <Text style={{ fontSize: 32 }}>{this.props.count.count}</Text>
+          <Text style={{ fontSize: 32 }}>{this.props.numbers.count}</Text>
         </View>
-        <TouchableOpacity
-          style={{
-            backgroundColor: 'darksalmon',
-            width: '80%',
-            height: 50,
-            borderRadius: 25,
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-          onPress={() => this.props.incrementCount()}
-        >
+        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.incrementCount()}>
           <View>
             <Text style={{ fontSize: 20 }}>Increase</Text>
           </View>
@@ -39,7 +29,7 @@ class WorkZone extends Component {
 // mapStateToProps
 const mapStateToProps = (state) => {
   return {
-    count: state.count
+    numbers: state.numbers
   };
 };
 
@@ -50,6 +40,20 @@ const mapDispatchToProps = {
 
 // Export Statement
 export default connect(mapStateToProps, mapDispatchToProps)(WorkZone);
+
+const styles = StyleSheet.create({
+  containerStyle: { justifyContent: 'center', alignItems: 'center', width: '100%' },
+  textContainerStyle: { justifyContent: 'center', alignItems: 'center', marginBottom: 60 },
+  buttonStyle: {
+    backgroundColor: 'darksalmon',
+    width: '80%',
+    maxWidth: 820, // 80% of 1024 (iPad pro portrait width)
+    height: 50,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});
 
 // In imports up top, we need to pull in connect from react-redux to "connet" our component to redux
 

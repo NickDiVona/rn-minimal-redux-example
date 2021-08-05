@@ -4,7 +4,7 @@ import * as ActionTypes from '../actionTypes';
 const INITIAL_STATE = { count: 0 };
 
 // reducer
-export const CountReducer = (state = INITIAL_STATE, action) => {
+export const NumbersReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ActionTypes.INCREMENT_COUNT:
       return { ...state, count: state.count + 1 };
