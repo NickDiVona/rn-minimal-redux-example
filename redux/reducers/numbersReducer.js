@@ -9,6 +9,9 @@ export const NumbersReducer = (state = INITIAL_STATE, action) => {
     case ActionTypes.INCREMENT_COUNT:
       return { ...state, count: state.count + 1 };
 
+    case ActionTypes.DECREMENT_COUNT:
+      return { ...state, count: state.count - 1 };
+
     default:
       return state;
   }

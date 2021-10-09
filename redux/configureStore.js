@@ -1,9 +1,11 @@
 import { createStore, combineReducers } from 'redux';
 import { NumbersReducer } from './reducers/numbersReducer';
+import { ColorsReducer } from './reducers/colorsReducer';
 
 export const ConfigureStore = () => {
   const rootReducer = combineReducers({
-    numbers: NumbersReducer
+    numbers: NumbersReducer,
+    colors: ColorsReducer
   });
 
   const store = createStore(rootReducer);

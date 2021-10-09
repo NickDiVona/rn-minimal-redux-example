@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import { incrementCount } from '../redux/actionCreators';
+import { incrementCount, decrementCount, changeColor } from '../redux/actionCreators';
 
 // Component
 class WorkZone extends Component {
@@ -9,9 +9,30 @@ class WorkZone extends Component {
     super(props);
   }
 
+  bigButtonPressed = () => {
+    if (this.props.colors.squareBgColor === 'lightgreen') {
+      this.props.changeColor('black');
+    } else {
+      this.props.changeColor('lightgreen');
+    }
+  };
+
   render() {
     return (
       <View style={styles.containerStyle}>
+        <TouchableOpacity
+          style={{
+            width: 200,
+            height: 200,
+            backgroundColor: `${this.props.colors.squareBgColor}`,
+            marginBottom: 20,
+            borderRadius: 50
+          }}
+          onPress={() => this.bigButtonPressed()}
+        >
+          <View />
+        </TouchableOpacity>
+
         <View style={styles.textContainerStyle}>
           <Text style={{ fontSize: 24 }}>Current Count:</Text>
           <Text style={{ fontSize: 32 }}>{this.props.numbers.count}</Text>
@@ -19,6 +40,14 @@ class WorkZone extends Component {
         <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.incrementCount()}>
           <View>
             <Text style={{ fontSize: 20 }}>Increase</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.buttonStyle, { backgroundColor: 'lightblue' }]}
+          onPress={() => this.props.decrementCount()}
+        >
+          <View>
+            <Text style={{ fontSize: 20 }}>Decrease</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -29,13 +58,16 @@ class WorkZone extends Component {
 // mapStateToProps
 const mapStateToProps = (state) => {
   return {
-    numbers: state.numbers
+    numbers: state.numbers,
+    colors: state.colors
   };
 };
 
 // mapDispatchToProps
 const mapDispatchToProps = {
-  incrementCount: () => incrementCount()
+  incrementCount: () => incrementCount(),
+  decrementCount: () => decrementCount(),
+  changeColor: (color) => changeColor(color)
 };
 
 // Export Statement
@@ -51,7 +83,8 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 20
   }
 });
 

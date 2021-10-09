@@ -6,6 +6,19 @@ export const incrementCount = () => {
   };
 };
 
+export const decrementCount = () => {
+  return {
+    type: ActionTypes.DECREMENT_COUNT
+  };
+};
+
+export const changeColor = (color) => {
+  return {
+    type: ActionTypes.CHANGE_COLOR,
+    payload: color
+  };
+};
+
 // import all of your action types to prevent mistakes
 
 // Declare any functions you might need, these are your action creators that return actions.
