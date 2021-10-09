@@ -26,15 +26,23 @@ Clone/Download this project to experiment without creating a new repository.
 
 NodeJS comes with NPM, the Node Package Manager, but I personally prefer using Yarn for running projects.
 To install Yarn, run the following:
+
 `npm i -g yarn`
 
 After that is installed, install the expo-cli by running the following:
+
 `npm i -g expo-cli`
 
 You can then clone this project, fork this project, or however you wish to get it.
 From there, you'll need to navigate into the project folder and run the following command to install packages:
+
 `yarn`
 
 After that, the last step you'll need to do is run the start command. I would suggest adding a flag so it opens in the web client as well.
 This command looks like this:
+
 `yarn start -w`
+
+If you want to change branches, run the following (replace BRANCH with either `master` or `New-Features`):
+
+`git checkout BRANCH`
