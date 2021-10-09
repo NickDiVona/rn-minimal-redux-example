@@ -43,6 +43,6 @@ This command looks like this:
 
 `yarn start -w`
 
-If you want to change branches, run the following (replace BRANCH with either `master` or `New-Features`):
+If you want to change branches, run the following (replace BRANCH with either `main` or `New-Features`):
 
 `git checkout BRANCH`
